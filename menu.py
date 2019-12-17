@@ -1,5 +1,6 @@
 from models.appointment import Appointment
 from models.counselor import Counselor
+from pprint import pprint
 
 
 class Menu(object):
@@ -25,7 +26,11 @@ class Menu(object):
                                                                  + " " + self.counselor.last_name))
 
         if choice == '1':
-            print(Appointment.from_db(self.counselor.id))
+            results = Appointment.from_db(self.counselor.id)
+            for result in results:
+                pprint(result)
+
+
         elif choice == '2':
             self._set_new_appointment()
         else:
